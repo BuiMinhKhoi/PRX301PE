@@ -7,13 +7,58 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import khoibm.utils.XMLUtilitiesDOM;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 
 @WebServlet(name = "UpdateDOMServlet", urlPatterns = {"/UpdateDOMServlet"})
 public class UpdateDOMServlet extends HttpServlet {
 
+    private final String xmlFile = "WEB-INF/studentAccounts.xml";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        PrintWriter out = response.getWriter();
+        try {
+            String id = request.getParameter("txtId");
+            String sClass = request.getParameter("txtClass");
+            String address = request.getParameter("txtAddress");
+            String lastSearchValue = request.getParameter("lastSearchValue");
+
+            String realPath = this.getServletContext().getRealPath("/");
+            String filePath = realPath + xmlFile;
+            Document doc = XMLUtilitiesDOM.parseFileToDOM(filePath);
+
+            if (doc != null) {
+                XPath xpath = XMLUtilitiesDOM.createXPath();
+                String exp = "//student[@id='" + id + "']";
+                Node student = (Node) xpath.evaluate(exp, doc, XPathConstants.NODE);
+                if (student != null) {
+                    NamedNodeMap attrs = student.getAttributes();
+                    attrs.getNamedItem("class").setNodeValue(sClass);
+
+                    String exp1 = "//student[@id='" 
+                            + id 
+                            + "']/address";
+                    Node s = (Node) xpath.evaluate(exp1, doc, XPathConstants.NODE);
+                    if (s != null) {
+                        s.setTextContent(address);
+                    }
+                    XMLUtilitiesDOM.transformDomToStreamResult(doc, filePath);
+                }
+            }
+            String urlRewriting = "ProcessServlet?btAction=Search&txtSearch=" + lastSearchValue;
+            response.sendRedirect(urlRewriting);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

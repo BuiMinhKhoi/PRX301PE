@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ProcessServlet extends HttpServlet {
 
     private final String loginPage = "login.html";
-    private final String loginServlet = "LoginDOMServlet";
+    private final String loginServlet = "LoginSAXServlet";
     private final String searchServlet = "SearchSAXServlet";
     private final String deleteServlet = "DeleteDOMServlet";
-    private final String updateServlet = "UpdateStaxServlet";
+    private final String updateServlet = "UpdateDOMServlet";
     private final String createStudentServlet = "CreateStudentStAXServlet";
     
     

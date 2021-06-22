@@ -1,6 +1,10 @@
 package khoibm.dtos;
 
-public class StudentDTO {
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "students")
+public class StudentDTO implements Serializable {
 
     private String id, sClass, lastname, middlename, firstname, password, address, status;
     private int sex;

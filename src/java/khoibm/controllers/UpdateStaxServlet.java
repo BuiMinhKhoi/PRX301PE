@@ -1,19 +1,45 @@
 package khoibm.controllers;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.stream.XMLStreamReader;
+import khoibm.utils.XMLUtilitiesStAX;
 
 @WebServlet(name = "UpdateStaxServlet", urlPatterns = {"/UpdateStaxServlet"})
 public class UpdateStaxServlet extends HttpServlet {
 
+    private final String xmlFile = "WEB-INF/studentAccounts.xml";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        PrintWriter out = response.getWriter();
+        InputStream is = null;
+        XMLStreamReader reader = null;
+
+        try {
+            String id = request.getParameter("txtId");
+            String sClass = request.getParameter("txtClass");
+            String address = request.getParameter("txtAddress");
+            String lastSearchValue = request.getParameter("lastSearchValue");
+            String realPath = this.getServletContext().getRealPath("/");
+
+            XMLUtilitiesStAX.updateNodeinStAXUsingJAXB(id, sClass, address, xmlFile, realPath);
+
+            String urlRewriting = "ProcessServlet?btAction=Search&txtSearch=" + lastSearchValue;
+            response.sendRedirect(urlRewriting);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

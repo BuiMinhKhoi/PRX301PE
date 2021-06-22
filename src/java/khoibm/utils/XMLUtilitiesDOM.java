@@ -19,10 +19,8 @@ public class XMLUtilitiesDOM {
     public static Document parseFileToDOM(String filePath) throws Exception {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
-
         File f = new File(filePath);
         Document doc = db.parse(f);
-
         return doc;
     }
 

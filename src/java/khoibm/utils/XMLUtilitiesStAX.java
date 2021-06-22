@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLEventWriter;
@@ -16,6 +19,7 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+import khoibm.dtos.StudentDTO;
 
 public class XMLUtilitiesStAX {
 
@@ -189,6 +193,87 @@ public class XMLUtilitiesStAX {
                 }
             }
         }
+    }
+
+    public static void updateNodeinStAXUsingJAXB(String id, String sClass, String address, String xmlFileName, String realPath) {
+        InputStream is = null;
+        XMLEventReader reader = null;
+        OutputStream os = null;
+        XMLEventWriter writer = null;
+
+        try {
+            XMLInputFactory xif = XMLInputFactory.newInstance();
+            is = new FileInputStream(realPath + xmlFileName);
+            reader = xif.createXMLEventReader(is);
+
+            XMLOutputFactory xof = XMLOutputFactory.newInstance();
+            os = new FileOutputStream(realPath + xmlFileName + ".new");
+            writer = xof.createXMLEventWriter(os);
+            
+            JAXBContext jaxb = JAXBContext.newInstance(StudentDTO.class);
+            Unmarshaller unmarshaller = jaxb.createUnmarshaller();
+            Marshaller marshall = jaxb.createMarshaller();
+            marshall.setProperty(Marshaller.JAXB_FRAGMENT, true);
+
+            while (reader.hasNext()) {
+                if (reader.peek().isStartElement() && reader.peek().asStartElement().getName().getLocalPart().equals("student")) {
+                    StudentDTO dto = (StudentDTO) unmarshaller.unmarshal(reader);
+
+                    if (dto.getId().equals(id)) {
+                        dto.setAddress(address);
+                        dto.setsClass(sClass);
+                    }
+                    marshall.marshal(dto, writer);
+                } else {
+                    writer.add(reader.nextEvent());
+                }
+            }
+            writer.flush();
+            writer.close();
+            is.close();
+            os.close();
+
+            File file = new File(realPath + xmlFileName);
+            file.delete();
+            file = null;
+
+            file = new File(realPath + xmlFileName + ".new");
+            file.renameTo(new File(realPath + xmlFileName));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (os != null) {
+                try {
+                    os.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 
 }

@@ -1,33 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <students>
-    <student id="S01" class="SE1404">
-        <lastname>Khoi</lastname>
-        <middlename>Minh</middlename>   
-        <firstname>Bui</firstname>
-        <sex>1</sex>
-        <password>123</password>
-        <address>abc 123 HCM</address>
-        <status>studying</status>
+    <student id="SE01" class="SE1410">
+        <lastname>
+            Hung
+        </lastname>
+        <middlename>
+            Gia
+        </middlename>
+        <firstname>
+            Giang
+        </firstname>
+        <gender>
+            1
+        </gender>
+        <password>
+            123
+        </password>
+        <address>
+            123 Ho Chi Minh
+        </address>
+        <status>
+            Studying 
+        </status>
     </student>
-    <student id="S02" class="SE1404">
-        <lastname>Khoi</lastname>
-        <middlename>Minh</middlename>   
-        <firstname>Bui 2</firstname>
-        <sex>1</sex>
-        <password>123</password>
-        <address>123 HCM</address>
-        <status>Dropped out</status>
+    <student id="SE02" class="SE1410">
+        <lastname>
+            Cullen
+        </lastname>
+        <middlename>
+            ABC
+        </middlename>
+        <firstname>
+            James
+        </firstname>
+        <gender>
+            0
+        </gender>
+        <password>
+            1234
+        </password>
+        <address>
+            123 Ho Chi Minh
+        </address>
+        <status>
+            Dropout 
+        </status>
     </student>
-    <student id="S03" class="SE1404">
-        <lastname>Khoi</lastname>
-        <middlename>Minh</middlename>   
-        <firstname>Bui 3</firstname>
-        <sex>1</sex>
-        <password>123</password>
-        <address>HCM</address>
-        <status>break</status>
+    <student id="SE03" class="SE1410">
+        <lastname>
+            Minh
+        </lastname>
+        <middlename>
+            James
+        </middlename>
+        <firstname>
+            Ho Chi
+        </firstname>
+        <gender>
+            1
+        </gender>
+        <password>
+            1234
+        </password>
+        <address>
+            HCM City
+        </address>
+        <status>
+            Break 
+        </status>
     </student>
 </students>
-
-
-
