@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><students>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><students>
     
-    <student id="S02" class="SE1404">
+    <student class="SE1404" id="S02">
         <lastname>Khoi</lastname>
         <middlename>Minh</middlename>   
         <firstname>Bui 2</firstname>
@@ -9,7 +9,7 @@
         <address>123 HCM</address>
         <status>Dropped out</status>
     </student>
-    <student id="S03" class="SE1404">
+    <student class="SE1404" id="S03">
         <lastname>Khoi</lastname>
         <middlename>Minh</middlename>   
         <firstname>Bui 3</firstname>

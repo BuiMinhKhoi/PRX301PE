@@ -16,17 +16,16 @@ import org.w3c.dom.Node;
 public class DeleteDOMServlet extends HttpServlet {
 
     private static final String XML_FILE = "/WEB-INF/studentAccounts.xml";
-    private static final String SUCCESS_PAGE = "SearchController";
-    private static final String ERROR_PAGE = "index.html";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR_PAGE;
+        
+        String url = "";
 
         try {
             String id = request.getParameter("id");
-            String txtAddress = request.getParameter("txtAddress");
+            String lastSearchValue = request.getParameter("lastSearchValue");
 
             String realPath = getServletContext().getRealPath("/");
             String filePath = realPath + XML_FILE;
@@ -45,16 +44,12 @@ public class DeleteDOMServlet extends HttpServlet {
                     boolean result = XMLUtilitiesDOM.transformDomToStreamResult(doc, filePath);
 
                     if (result) {
-                        url = SUCCESS_PAGE + "?txtAddress=" + txtAddress;
+                        url = "ProcessServlet?btAction=Search&txtAddress=" + lastSearchValue;
                     }
-
                 }
-
             }
-
         } catch (Exception e) {
-            System.out.println("Delete Controller: " + e.getMessage());
-
+            e.printStackTrace();
         } finally {
             response.sendRedirect(url);
         }
