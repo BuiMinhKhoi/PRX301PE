@@ -62,14 +62,14 @@
                                 </td>
                                 <td>
                                     <c:url var="delLink" value="ProcessServlet">
-                                        <c:param name="btnAction" value="del"/>
+                                        <c:param name="btAction" value="del"/>
                                         <c:param name="id" value="${dto.id}"/>
                                         <c:param name="lastSearchValue" value="${param.txtStatus}"/>
                                     </c:url>
                                     <a href="${delLink}">Delete</a>
                                 </td>
                                 <td>
-                                    <input type="submit" value="Update" name="btnAction"/>
+                                    <input type="submit" value="Update" name="btAction"/>
                                     <input type="hidden" name="lastSearchValue" value="${param.txtStatus}"/>
                                 </td>
                             </tr>

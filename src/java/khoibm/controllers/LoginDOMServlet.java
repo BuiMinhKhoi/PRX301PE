@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package khoibm.controllers;
 
 import java.io.IOException;
@@ -17,10 +12,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/**
- *
- * @author bmk
- */
 @WebServlet(name = "LoginDOMServlet", urlPatterns = {"/LoginDOMServlet"})
 public class LoginDOMServlet extends HttpServlet {
 
