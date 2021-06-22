@@ -14,7 +14,7 @@ public class ProcessServlet extends HttpServlet {
 
     private final String loginPage = "login.html";
     private final String loginServlet = "LoginDOMServlet";
-    private final String searchServlet = "SearchDOMServlet";
+    private final String searchServlet = "SearchSAXServlet";
     private final String deleteServlet = "DeleteStAXServlet";
     private final String updateServlet = "UpdateStaxServlet";
     private final String createStudentServlet = "CreateStudentStAXServlet";
