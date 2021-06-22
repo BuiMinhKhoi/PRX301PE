@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student id="S01" class="SE1404">
+        <lastname>Khoi</lastname>
+        <middlename>Minh</middlename>   
+        <firstname>Bui</firstname>
+        <sex>1</sex>
+        <password>123</password>
+        <address>abc 123 HCM</address>
+        <status>studying</status>
+    </student>
+    <student id="S02" class="SE1404">
+        <lastname>Khoi</lastname>
+        <middlename>Minh</middlename>   
+        <firstname>Bui 2</firstname>
+        <sex>1</sex>
+        <password>123</password>
+        <address>123 HCM</address>
+        <status>Dropped out</status>
+    </student>
+    <student id="S03" class="SE1404">
+        <lastname>Khoi</lastname>
+        <middlename>Minh</middlename>   
+        <firstname>Bui 3</firstname>
+        <sex>1</sex>
+        <password>123</password>
+        <address>HCM</address>
+        <status>break</status>
+    </student>
+</students>
+
+
+
