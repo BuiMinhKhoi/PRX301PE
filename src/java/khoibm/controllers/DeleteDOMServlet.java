@@ -44,7 +44,7 @@ public class DeleteDOMServlet extends HttpServlet {
                     boolean result = XMLUtilitiesDOM.transformDomToStreamResult(doc, filePath);
 
                     if (result) {
-                        url = "ProcessServlet?btAction=Search&txtAddress=" + lastSearchValue;
+                        url = "ProcessServlet?btAction=Search&txtSearch=" + lastSearchValue;
                     }
                 }
             }

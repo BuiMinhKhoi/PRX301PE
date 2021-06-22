@@ -16,11 +16,11 @@
         <font color="red">Welcome, ${sessionScope.FULLNAME}</font>
         <h1>Search Page</h1>
         <form action="ProcessServlet">
-            Status <input type="text" name="txtStatus" value="${param.txtStatus}"/><br/>
+            Status <input type="text" name="txtSearch" value="${param.txtSearch}"/><br/>
             <input type="submit" value="Search" name="btAction"/>
         </form>
         <br/>
-        <c:set var="status" value="${param.txtStatus}"/>
+        <c:set var="status" value="${param.txtSearch}"/>
         <c:if test="${not empty status}">
             <c:set var="result" value="${requestScope.SEARCHRESULT}"/>
             <c:if test="${not empty result}">
@@ -64,13 +64,13 @@
                                     <c:url var="delLink" value="ProcessServlet">
                                         <c:param name="btAction" value="del"/>
                                         <c:param name="id" value="${dto.id}"/>
-                                        <c:param name="lastSearchValue" value="${param.txtStatus}"/>
+                                        <c:param name="lastSearchValue" value="${param.txtSearch}"/>
                                     </c:url>
                                     <a href="${delLink}">Delete</a>
                                 </td>
                                 <td>
                                     <input type="submit" value="Update" name="btAction"/>
-                                    <input type="hidden" name="lastSearchValue" value="${param.txtStatus}"/>
+                                    <input type="hidden" name="lastSearchValue" value="${param.txtSearch}"/>
                                 </td>
                             </tr>
                         </form>

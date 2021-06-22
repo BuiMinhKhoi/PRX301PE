@@ -32,7 +32,7 @@ public class SearchDOMServlet extends HttpServlet {
             String realPath = getServletContext().getRealPath("/");
             String filePath = realPath + XML_FILE;
 
-            String txtAddress = request.getParameter("txtStatus");
+            String txtAddress = request.getParameter("txtSearch");
             Document doc = XMLUtilitiesDOM.parseFileToDOM(filePath);
 
             if (doc != null) {

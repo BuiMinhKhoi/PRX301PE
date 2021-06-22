@@ -32,7 +32,7 @@ public class SearchStAXServlet extends HttpServlet {
         List<StudentDTO> students = null;
 
         try {
-            String searchValue = request.getParameter("txtStatus");
+            String searchValue = request.getParameter("txtSearch");
 
             String realPath = this.getServletContext().getRealPath("/");
             String filePath = realPath + xmlFile;

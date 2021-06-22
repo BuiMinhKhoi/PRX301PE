@@ -21,7 +21,7 @@ public class SearchSAXServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            String search = request.getParameter("txtStatus");
+            String search = request.getParameter("txtSearch");
             String realPath = getServletContext().getRealPath("/");
             String filePath = realPath + XML_FILE;
 

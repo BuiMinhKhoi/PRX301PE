@@ -25,7 +25,7 @@ public class DeleteStAXServlet extends HttpServlet {
 
             String realPath = this.getServletContext().getRealPath("/");
             XMLUtilitiesStAX.deleteNodeinStAX(id, xmlFile, realPath);
-            String urlRewriting = "ProcessServlet?btAction=Search&txtAddress=" + lastSearchValue;
+            String urlRewriting = "ProcessServlet?btAction=Search&txtSearch=" + lastSearchValue;
             response.sendRedirect(urlRewriting);
         } catch (Exception e) {
             e.printStackTrace();
